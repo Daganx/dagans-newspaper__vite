@@ -5,10 +5,15 @@ import {
   createArticle,
   updateArticle,
 } from "../../services/articleService";
+import "./dashboard.css";
 
 const Dashboard = () => {
   const [articles, setArticles] = useState([]);
-  const [newArticle, setNewArticle] = useState({ title: "", content: "" });
+  const [newArticle, setNewArticle] = useState({
+    title: "",
+    content: "",
+    images: null,
+  });
   const [editingArticle, setEditingArticle] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +39,7 @@ const Dashboard = () => {
       setLoading(true);
       const createdArticle = await createArticle(newArticle); // Appel de la fonction createArticle
       setArticles((prev) => [createdArticle, ...prev]); // Ajoute le nouvel article au début de la liste
-      setNewArticle({ title: "", content: "" }); // Réinitialise les champs du formulaire
+      setNewArticle({ title: "", content: "", images: null }); // Réinitialise les champs du formulaire
     } catch (error) {
       console.error("Error creating article", error);
     } finally {
@@ -45,25 +50,26 @@ const Dashboard = () => {
   // Mettre à jour un article
   const handleUpdate = async (e) => {
     e.preventDefault();
+
     if (!editingArticle.title || !editingArticle.content) {
-      alert("Both title and content are required.");
+      alert("Le titre et le contenu sont requis");
       return;
     }
 
     try {
       setLoading(true);
-      const updatedArticle = await updateArticle(
-        editingArticle._id,
-        editingArticle
-      );
+      const result = await updateArticle(editingArticle._id, {
+        title: editingArticle.title,
+        content: editingArticle.content,
+        images: editingArticle.images,
+        newImages: editingArticle.newImages,
+      });
       setArticles((prev) =>
-        prev.map((article) =>
-          article._id === updatedArticle._id ? updatedArticle : article
-        )
+        prev.map((article) => (article._id === result._id ? result : article))
       );
-      setEditingArticle(null); // Fermer le formulaire de mise à jour
+      setEditingArticle(null);
     } catch (error) {
-      console.error("Error updating article", error);
+      console.error("Erreur lors de la mise à jour:", error);
     } finally {
       setLoading(false);
     }
@@ -84,6 +90,13 @@ const Dashboard = () => {
   // Sélectionner l'article à mettre à jour
   const handleEdit = (article) => {
     setEditingArticle(article);
+  };
+
+  const handleRemoveImage = (indexToRemove) => {
+    setEditingArticle((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, index) => index !== indexToRemove),
+    }));
   };
 
   return (
@@ -117,13 +130,14 @@ const Dashboard = () => {
           />
         </div>
         <div>
-          <label htmlFor="image">Image</label>
+          <label htmlFor="images">Images</label>
           <input
             type="file"
-            id="image"
+            id="images"
+            multiple
             accept="image/*"
             onChange={(e) =>
-              setNewArticle({ ...newArticle, image: e.target.files[0] })
+              setNewArticle({ ...newArticle, images: e.target.files })
             }
           />
         </div>
@@ -164,6 +178,59 @@ const Dashboard = () => {
                 }
               />
             </div>
+
+            {/* Affichage des images existantes */}
+            <div>
+              <h4>Images actuelles :</h4>
+              {editingArticle.images &&
+                editingArticle.images.map((image, index) => (
+                  <div
+                    key={index}
+                    style={{ display: "inline-block", position: "relative" }}
+                  >
+                    <img
+                      src={image}
+                      alt={`${editingArticle.title} - image ${index + 1}`}
+                      style={{ maxWidth: "200px", margin: "5px" }}
+                    />
+                    <button
+                      onClick={() => handleRemoveImage(index)}
+                      style={{
+                        position: "absolute",
+                        top: "5px",
+                        right: "5px",
+                        background: "red",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "25px",
+                        height: "25px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+            </div>
+
+            {/* Input pour ajouter/modifier les images */}
+            <div>
+              <label htmlFor="updateImages">Modifier les images</label>
+              <input
+                type="file"
+                id="updateImages"
+                multiple
+                accept="image/*"
+                onChange={(e) =>
+                  setEditingArticle({
+                    ...editingArticle,
+                    newImages: e.target.files,
+                  })
+                }
+              />
+            </div>
+
             <button type="submit" disabled={loading}>
               {loading ? "Updating..." : "Update Article"}
             </button>
@@ -177,13 +244,15 @@ const Dashboard = () => {
         <div key={article._id}>
           <h3>{article.title}</h3>
           <p>{article.content}</p>
-          {article.image && (
-            <img
-              src={article.image}
-              alt={article.title}
-              style={{ maxWidth: "100%" }}
-            />
-          )}
+          {article.images &&
+            article.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`${article.title} - image ${index + 1}`}
+                style={{ maxWidth: "200px", margin: "5px" }}
+              />
+            ))}
           <button onClick={() => handleDelete(article._id)}>Delete</button>
           <button onClick={() => handleEdit(article)}>Edit</button>
         </div>
