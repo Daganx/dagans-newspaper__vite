@@ -116,6 +116,17 @@ const Dashboard = () => {
             placeholder="Enter content"
           />
         </div>
+        <div>
+          <label htmlFor="image">Image</label>
+          <input
+            type="file"
+            id="image"
+            accept="image/*"
+            onChange={(e) =>
+              setNewArticle({ ...newArticle, image: e.target.files[0] })
+            }
+          />
+        </div>
         <button type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create Article"}
         </button>
@@ -166,6 +177,13 @@ const Dashboard = () => {
         <div key={article._id}>
           <h3>{article.title}</h3>
           <p>{article.content}</p>
+          {article.image && (
+            <img
+              src={article.image}
+              alt={article.title}
+              style={{ maxWidth: "100%" }}
+            />
+          )}
           <button onClick={() => handleDelete(article._id)}>Delete</button>
           <button onClick={() => handleEdit(article)}>Edit</button>
         </div>

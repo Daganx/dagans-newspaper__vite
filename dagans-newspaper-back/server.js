@@ -1,18 +1,11 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const connectDB = require("./config/db");
 
 // Connexion à MongoDB
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err.message);
-  });
+connectDB();
 
 // Initialisation de l'application Express
 const app = express();
@@ -30,7 +23,6 @@ const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const articleRoutes = require("./routes/articleRoutes");
 
-// Associer les routes avec des préfixes distincts
 app.use("/api/auth", authRoutes); // Routes pour l'authentification
 app.use("/api/auth", adminRoutes); // Routes pour l'administration
 app.use("/api/articles", articleRoutes); // Routes pour les articles

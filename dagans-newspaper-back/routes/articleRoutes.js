@@ -2,19 +2,59 @@ const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
 const protect = require("../middleware/authMiddleware");
+const multer = require("multer");
+const cloudinary = require("../config/cloudinary");
 
-// Créer un article
-router.post("/", protect, async (req, res) => {
+// Configuration multer (stockage en mémoire)
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+// Endpoints pour le CRUD des articles
+
+// Créer un article avec image
+router.post("/", protect, upload.single("image"), async (req, res) => {
   const { title, content } = req.body;
 
   try {
-    const newArticle = await Article.create({ title, content });
+    let imageUrl = null;
+
+    if (req.file) {
+      // Promisify l'upload_stream pour utiliser async/await
+      const uploadFromBuffer = (buffer) => {
+        return new Promise((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            { folder: "articles" },
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(result);
+              }
+            }
+          );
+          uploadStream.end(buffer); // Envoi du buffer au stream
+        });
+      };
+
+      // Appel de la fonction d'upload
+      const result = await uploadFromBuffer(req.file.buffer);
+      imageUrl = result.secure_url;
+    }
+
+    // Création de l'article avec l'image uploadée
+    const newArticle = await Article.create({
+      title,
+      content,
+      image: imageUrl,
+    });
+
     res.status(201).json(newArticle);
   } catch (err) {
-    console.error(err); // Log de l'erreur pour le débogage
+    console.error(err); // Log des erreurs
     res.status(500).json({ message: "Server error" });
   }
 });
+
 // Lire tous les articles (protégé)
 router.get("/", protect, async (req, res) => {
   try {

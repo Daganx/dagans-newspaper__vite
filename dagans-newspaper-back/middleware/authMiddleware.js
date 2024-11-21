@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+
+// Middleware pour protéger route via token
 const protect = (req, res, next) => {
   let token;
 
@@ -23,3 +26,5 @@ const protect = (req, res, next) => {
     return res.status(401).json({ message: "Not authorized, no token" });
   }
 };
+
+module.exports = protect;

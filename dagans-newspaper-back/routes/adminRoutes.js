@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const Admin = require("../models/Admin"); // Le modèle Admin
 const router = express.Router();
 
+// Route pour la connexion via /login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 

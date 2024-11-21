@@ -9,6 +9,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  images: [{
+    type: String, // URLs des images (hébergées sur Cloudinary)
+    required: false,
+  }],
   createdAt: {
     type: Date,
     default: Date.now,
