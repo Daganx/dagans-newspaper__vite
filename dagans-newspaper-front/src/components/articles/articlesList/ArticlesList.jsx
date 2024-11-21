@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { getPublicArticles } from "../../services/publicArticleService";
-import "./ArticlesList.css";
+import { getPublicArticles } from "../../../services/publicArticleService";
 import { Link } from "react-router-dom";
+import "./ArticlesList.css";
 
-const ArticlesList = () => {
+export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -67,6 +67,4 @@ const ArticlesList = () => {
       ))}
     </div>
   );
-};
-
-export default ArticlesList;
+}

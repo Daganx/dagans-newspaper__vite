@@ -1,12 +1,10 @@
-import ArticlesList from "../components/articles/ArticlesList";
+import ArticlesList from "../components/articles/articlesList/ArticlesList";
 
-const IndexPage = () => {
+export default function IndexPage() {
   return (
     <div>
-      <h1>Actualités</h1>
+      <h1>Dagans-Newspaper</h1>
       <ArticlesList />
     </div>
   );
-};
-
-export default IndexPage;
+}

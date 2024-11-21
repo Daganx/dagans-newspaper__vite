@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Login from "./pages/Login";
 import Dashboard from "./pages/dashboard";
-import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import IndexPage from "./pages/index";
-import ArticleDetail from "./components/articles/ArticleDetail";
+import ArticleDetail from "./components/articles/articleDetail/ArticleDetail";
 
-const App = () => {
+export default function App() {
   return (
     <Router>
       <Routes>
@@ -23,6 +23,4 @@ const App = () => {
       </Routes>
     </Router>
   );
-};
-
-export default App;
+}

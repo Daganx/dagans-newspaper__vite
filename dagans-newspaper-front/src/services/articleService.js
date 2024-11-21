@@ -1,3 +1,4 @@
+// Fichier de service pour les articles côté ADMIN //
 import axiosInstance from "./axiosInstance";
 
 export const getArticles = async () => {

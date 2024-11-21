@@ -16,7 +16,6 @@ const protect = (req, res, next) => {
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET); // Vérification du token
-      console.log("Decoded token:", decoded); // Affiche le contenu du token pour déboguer
       req.user = decoded.user; // Ajout de l'utilisateur décodé à la requête
       next(); // Poursuite de la requête
     } catch (err) {

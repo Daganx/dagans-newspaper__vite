@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getPublicArticle } from "../../services/publicArticleService";
+import { getPublicArticle } from "../../../services/publicArticleService";
 import "./articleDetail.css";
 
-const ArticleDetail = () => {
+export default function ArticleDetail() {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,7 +30,8 @@ const ArticleDetail = () => {
     fetchArticle();
   }, [id]);
 
-  if (loading) return <div className="loading">Chargement de l&apos;article...</div>;
+  if (loading)
+    return <div className="loading">Chargement de l&apos;article...</div>;
   if (error) return <div className="error">{error}</div>;
   if (!article) return <div className="error">Article non trouvé</div>;
 
@@ -83,6 +84,4 @@ const ArticleDetail = () => {
       </article>
     </div>
   );
-};
-
-export default ArticleDetail;
+}

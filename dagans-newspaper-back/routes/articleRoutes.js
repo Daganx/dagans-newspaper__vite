@@ -19,7 +19,7 @@ const upload = multer({
   },
 });
 
-// Endpoints pour le CRUD des articles
+// Endpoints pour le CRUD des articles (Protect) //
 
 // Créer un article avec image
 router.post("/", protect, upload.array("images", 5), async (req, res) => {
@@ -196,10 +196,10 @@ router.delete("/:id", protect, async (req, res) => {
   }
 });
 
-// Route publique pour lire tous les articles (non protégée)
+// Route publique pour lire tous les articles (non protégée) et affichage public
 router.get("/public", async (req, res) => {
   try {
-    const articles = await Article.find().sort({ createdAt: -1 }); // Tri par date décroissante
+    const articles = await Article.find().sort({ createdAt: -1 });
     res.status(200).json(articles);
   } catch (err) {
     console.error(err);

@@ -7,7 +7,7 @@ import {
 } from "../../services/articleService";
 import "./dashboard.css";
 
-const Dashboard = () => {
+export default function Dashboard() {
   const [articles, setArticles] = useState([]);
   const [newArticle, setNewArticle] = useState({
     title: "",
@@ -262,6 +262,4 @@ const Dashboard = () => {
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
-};
-
-export default Dashboard;
+}

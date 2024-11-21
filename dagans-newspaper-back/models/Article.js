@@ -11,7 +11,7 @@ const articleSchema = new mongoose.Schema({
   },
   images: [
     {
-      type: String, // URLs des images (hébergées sur Cloudinary)
+      type: String,
       required: false,
     },
   ],
