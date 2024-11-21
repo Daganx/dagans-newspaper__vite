@@ -1,10 +1,8 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:5000/api";
+import axiosInstance from "./axiosInstance";
 
 export const getPublicArticles = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}/articles/public`);
+    const { data } = await axiosInstance.get("/articles/public");
     return data;
   } catch (error) {
     console.error("Erreur lors de la récupération des articles:", error);
@@ -14,10 +12,10 @@ export const getPublicArticles = async () => {
 
 export const getPublicArticle = async (id) => {
   try {
-    const { data } = await axios.get(`${API_URL}/articles/public/${id}`);
+    const { data } = await axiosInstance.get(`/articles/public/${id}`);
     return data;
   } catch (error) {
     console.error("Erreur lors de la récupération de l'article:", error);
     throw error;
   }
-}; 
+};
