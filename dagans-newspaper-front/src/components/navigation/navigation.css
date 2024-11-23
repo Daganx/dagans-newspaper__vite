@@ -1,0 +1,16 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.navigation ul {
+  display: flex;
+  gap: 64px;
+  padding: 16px;
+}
+.navigation li {
+  font-family: "main-font";
+  font-size: 1.4rem;
+  position: relative;
+}

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getPublicArticles } from "../../../services/publicArticleService";
 import { Link } from "react-router-dom";
-import "./ArticlesList.css";
+import "./latestArticles.css";
 
+// Affichage des 6 derniers articles sur la page index
 export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,8 +29,8 @@ export default function ArticlesList() {
   if (error) return <div className="error">{error}</div>;
 
   return (
-    <div className="articles-container">
-      {articles.map((article) => (
+    <section className="articles-container">
+      {articles.slice(0, 6).map((article) => (
         <article key={article._id} className="article-card">
           <Link to={`/article/${article._id}`} className="article-link">
             <div className="article-images">
@@ -44,7 +45,7 @@ export default function ArticlesList() {
             <div className="article-content">
               <h2>{article.title}</h2>
               <p>{article.content.substring(0, 200)}...</p>
-              {article.images && article.images.length > 1 && (
+              {/* {article.images && article.images.length > 1 && (
                 <div className="additional-images">
                   {article.images.slice(1).map((image, index) => (
                     <img
@@ -55,7 +56,7 @@ export default function ArticlesList() {
                     />
                   ))}
                 </div>
-              )}
+              )} */}
               <div className="article-footer">
                 <span className="article-date">
                   {new Date(article.createdAt).toLocaleDateString("fr-FR")}
@@ -65,6 +66,6 @@ export default function ArticlesList() {
           </Link>
         </article>
       ))}
-    </div>
+    </section>
   );
 }

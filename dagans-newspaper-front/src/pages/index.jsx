@@ -1,10 +1,11 @@
-import ArticlesList from "../components/articles/articlesList/ArticlesList";
+import ArticlesList from "../components/articles/latestArticles/latestArticles";
+import Banner from "../components/banner/Banner";
 
 export default function IndexPage() {
   return (
-    <div>
-      <h1>Dagans-Newspaper</h1>
+    <>
+      <Banner />
       <ArticlesList />
-    </div>
+    </>
   );
 }
