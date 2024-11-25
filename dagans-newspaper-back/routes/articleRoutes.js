@@ -23,7 +23,7 @@ const upload = multer({
 
 // Créer un article avec image
 router.post("/", protect, upload.array("images", 5), async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, category } = req.body;
 
   try {
     let imageUrls = [];
@@ -81,6 +81,7 @@ router.post("/", protect, upload.array("images", 5), async (req, res) => {
     const newArticle = await Article.create({
       title,
       content,
+      category,
       images: imageUrls,
     });
 

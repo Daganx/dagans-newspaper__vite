@@ -33,7 +33,7 @@ export default function ArticlesList() {
       {articles.slice(0, 6).map((article) => (
         <article key={article._id} className="article-card">
           <Link to={`/article/${article._id}`} className="article-link">
-            <div className="article-images">
+            <figure className="article-images">
               {article.images && article.images.length > 0 && (
                 <img
                   src={article.images[0]}
@@ -41,22 +41,13 @@ export default function ArticlesList() {
                   className="main-image"
                 />
               )}
-            </div>
+            </figure>
             <div className="article-content">
+              <div className="article-category">
+                <p>{article.category}</p>
+              </div>
               <h2>{article.title}</h2>
               <p>{article.content.substring(0, 200)}...</p>
-              {/* {article.images && article.images.length > 1 && (
-                <div className="additional-images">
-                  {article.images.slice(1).map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`${article.title} - image ${index + 2}`}
-                      className="thumbnail"
-                    />
-                  ))}
-                </div>
-              )} */}
               <div className="article-footer">
                 <span className="article-date">
                   {new Date(article.createdAt).toLocaleDateString("fr-FR")}

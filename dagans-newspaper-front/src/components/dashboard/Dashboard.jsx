@@ -13,6 +13,7 @@ export default function Dashboard() {
     title: "",
     content: "",
     images: null,
+    category: "",
   });
   const [editingArticle, setEditingArticle] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ export default function Dashboard() {
       setLoading(true);
       const createdArticle = await createArticle(newArticle); // Appel de la fonction createArticle
       setArticles((prev) => [createdArticle, ...prev]); // Ajoute le nouvel article au début de la liste
-      setNewArticle({ title: "", content: "", images: null }); // Réinitialise les champs du formulaire
+      setNewArticle({ title: "", content: "", images: null, category: "" }); // Réinitialise les champs du formulaire
     } catch (error) {
       console.error("Error creating article", error);
     } finally {
@@ -51,8 +52,12 @@ export default function Dashboard() {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    if (!editingArticle.title || !editingArticle.content) {
-      alert("Le titre et le contenu sont requis");
+    if (
+      !editingArticle.title ||
+      !editingArticle.content ||
+      !editingArticle.category
+    ) {
+      alert("Le titre, le contenu et la catégorie sont requis");
       return;
     }
 
@@ -63,6 +68,7 @@ export default function Dashboard() {
         content: editingArticle.content,
         images: editingArticle.images,
         newImages: editingArticle.newImages,
+        category: editingArticle.category,
       });
       setArticles((prev) =>
         prev.map((article) => (article._id === result._id ? result : article))
@@ -130,6 +136,22 @@ export default function Dashboard() {
           />
         </div>
         <div>
+          <label htmlFor="category">Category</label>
+          <select
+            id="category"
+            value={newArticle.category}
+            onChange={(e) =>
+              setNewArticle({ ...newArticle, category: e.target.value })
+            }
+            required
+          >
+            <option value="">Select a category</option>
+            <option value="News">News</option>
+            <option value="Guides">Guides</option>
+            <option value="Projects">Projects</option>
+          </select>
+        </div>
+        <div>
           <label htmlFor="images">Images</label>
           <input
             type="file"
@@ -178,7 +200,25 @@ export default function Dashboard() {
                 }
               />
             </div>
-
+            <div>
+              <label htmlFor="category">Category</label>
+              <select
+                id="category"
+                value={editingArticle.category}
+                onChange={(e) =>
+                  setEditingArticle({
+                    ...editingArticle,
+                    category: e.target.value,
+                  })
+                }
+                required
+              >
+                <option value="">Select a category</option>
+                <option value="News">News</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select>
+            </div>
             {/* Affichage des images existantes */}
             <div>
               <h4>Images actuelles :</h4>

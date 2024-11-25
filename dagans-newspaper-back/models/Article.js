@@ -15,6 +15,11 @@ const articleSchema = new mongoose.Schema({
       required: false,
     },
   ],
+  category: {
+    type: String,
+    enum: ["News", "Guides", "Projects"],
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

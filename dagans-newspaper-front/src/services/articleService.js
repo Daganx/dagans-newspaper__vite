@@ -16,6 +16,7 @@ export const createArticle = async (article) => {
     const formData = new FormData();
     formData.append("title", article.title);
     formData.append("content", article.content);
+    formData.append("category", article.category);
     if (article.images) {
       Array.from(article.images).forEach((image) => {
         formData.append("images", image);

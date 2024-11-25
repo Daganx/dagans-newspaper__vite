@@ -6,7 +6,7 @@
 }
 .navigation ul {
   display: flex;
-  gap: 64px;
+  gap: 132px;
   padding: 16px;
 }
 .navigation li {
