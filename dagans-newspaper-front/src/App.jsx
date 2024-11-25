@@ -6,6 +6,9 @@ import IndexPage from "./pages/index";
 import ArticleDetail from "./components/articles/articleDetail/ArticleDetail";
 import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
+import NewsArticles from "./pages/newsArticles"
+import GuidesArticles from "./pages/guidesArticles";
+import ProjectsArticles from "./pages/projectsArticles";
 
 export default function App() {
   return (
@@ -23,6 +26,9 @@ export default function App() {
           }
         />
         <Route path="/article/:id" element={<ArticleDetail />} />
+        <Route path="/articles/news" element={<NewsArticles />} />
+        <Route path="/articles/guides" element={<GuidesArticles />} />
+        <Route path="/articles/projects" element={<ProjectsArticles />} />
       </Routes>
       <Footer />
     </Router>

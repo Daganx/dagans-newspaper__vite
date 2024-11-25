@@ -1,0 +1,11 @@
+.latest-articles-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.latest-articles-banner h2 {
+  font-size: 3rem;
+}

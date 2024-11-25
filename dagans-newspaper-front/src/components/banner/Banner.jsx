@@ -9,6 +9,11 @@ export default function Banner() {
         Vous retrouverez ici des Guides, News et Projets
         <br /> sur JS et ses Frameworks.
       </h2>
+      <h3>
+        J&apos;ai crée ce site afin de vous proposez des exemples concret
+        <br />
+        de l&apos;utilisation de frameworks & bibliothèques autour de JS.
+      </h3>
     </section>
   );
 }

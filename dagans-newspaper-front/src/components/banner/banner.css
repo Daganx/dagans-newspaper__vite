@@ -8,10 +8,16 @@
   justify-content: center;
 }
 .banner h2 {
-  padding: 64px;
+  padding: 64px 64px 16px 64px;
   margin: 0;
   line-height: 1;
   margin-top: 2rem;
+}
+.banner h3 {
+  font-size: 1.4rem;
+  padding-left: 64px;
+  padding-right: 64px;
+  letter-spacing: -1px;
 }
 .banner-socials {
   display: flex;

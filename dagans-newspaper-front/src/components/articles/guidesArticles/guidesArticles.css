@@ -1,0 +1,50 @@
+.guides-articles-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.guides-article-card {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  background: inherit;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.guides-article-link {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.guides-article-image {
+  height: 40%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.guides-article-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+@media (max-width: 1024px) {
+  .guides-articles-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .guides-articles-container {
+    grid-template-columns: 1fr;
+  }
+}

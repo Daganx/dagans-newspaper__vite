@@ -45,6 +45,7 @@ export const updateArticle = async (id, article) => {
 
     formData.append("title", article.title);
     formData.append("content", article.content);
+    formData.append("category", article.category);
 
     if (article.images) {
       formData.append("existingImages", JSON.stringify(article.images));

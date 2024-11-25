@@ -8,7 +8,15 @@
   color: rgb(5, 5, 5);
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #root {
+  position: relative; /* Ajoutez cette ligne */
   max-width: 1920px;
   background-color: var(--primary-background-color);
 

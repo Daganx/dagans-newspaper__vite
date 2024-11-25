@@ -1,17 +1,25 @@
 .footer {
-  height: 20vh;
-  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(5, 5, 5);
+  justify-content: space-between;
+  padding: 2rem;
+  font-size: 1.4rem;
 }
 
-.footer-socials {
+.footer ul {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 20px;
 }
 
 .footer a {
-  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .footer p {
+    display: none;
+  }
+  .footer {
+    justify-content: center;
+  }
 }

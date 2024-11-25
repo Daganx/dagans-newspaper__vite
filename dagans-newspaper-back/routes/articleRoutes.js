@@ -108,7 +108,7 @@ router.get("/", protect, async (req, res) => {
 // Mettre à jour un article
 router.put("/:id", protect, upload.array("images", 5), async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, category } = req.body;
     const existingImages = req.body.existingImages
       ? JSON.parse(req.body.existingImages)
       : [];
@@ -121,6 +121,7 @@ router.put("/:id", protect, upload.array("images", 5), async (req, res) => {
     // Mise à jour des champs de base
     article.title = title;
     article.content = content;
+    article.category = category;
 
     // Mettre à jour la liste des images existantes
     article.images = existingImages;

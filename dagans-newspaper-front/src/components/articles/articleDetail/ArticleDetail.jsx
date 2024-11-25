@@ -36,30 +36,30 @@ export default function ArticleDetail() {
   if (!article) return <div className="error">Article non trouvé</div>;
 
   return (
-    <div className="article-detail">
-      <button className="back-button" onClick={() => navigate(-1)}>
+    <div className="article-details">
+      <button className="back-button-details" onClick={() => navigate(-1)}>
         ← Retour
       </button>
 
-      <article className="article-content">
+      <article className="article-content-details">
         <h1>{article.title}</h1>
 
-        <div className="article-date">
+        <div className="article-date-details">
           Publié le {new Date(article.createdAt).toLocaleDateString("fr-FR")}
         </div>
 
         {article.images && article.images.length > 0 && (
-          <div className="image-gallery">
-            <div className="main-image-container">
+          <div className="article-image-details">
+            <div className="article-image-container">
               <img
                 src={selectedImage || article.images[0]}
                 alt={article.title}
-                className="main-image"
+                className="main-image-details"
               />
             </div>
 
             {article.images.length > 1 && (
-              <div className="image-thumbnails">
+              <div className="article-image-details-thumbnails">
                 {article.images.map((image, index) => (
                   <img
                     key={index}
@@ -76,7 +76,7 @@ export default function ArticleDetail() {
           </div>
         )}
 
-        <div className="article-text">
+        <div className="article-text-details">
           {article.content.split("\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
