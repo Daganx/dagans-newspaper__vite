@@ -1,3 +1,5 @@
+// Affichage d'UN article via la route /article/:id
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPublicArticle } from "../../../services/publicArticleService";

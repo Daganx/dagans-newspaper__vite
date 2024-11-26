@@ -1,3 +1,5 @@
+// Affichage des articles "NEWS" sur la page accueil
+
 import { useState, useEffect } from "react";
 import { getPublicArticles } from "../../../services/publicArticleService";
 import { Link } from "react-router-dom";

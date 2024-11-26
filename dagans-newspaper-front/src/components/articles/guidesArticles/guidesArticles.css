@@ -4,7 +4,6 @@
   gap: 32px;
   padding: 2rem;
 }
-
 .guides-article-card {
   display: flex;
   flex-direction: column;
@@ -14,7 +13,6 @@
   overflow: hidden;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-
 .guides-article-link {
   text-decoration: none;
   color: inherit;
@@ -23,27 +21,24 @@
   flex-direction: column;
   position: relative;
 }
-
 .guides-article-image {
   height: 40%;
   overflow: hidden;
   object-fit: cover;
 }
-
-.guides-article-category p{
-  background-color: #E4C087;
+.guides-article-category p {
+  background-color: #e4c087;
   display: inline-flex;
   padding: 8px;
   border-radius: 30px;
 }
-
 .guides-article-content {
-    padding: 1rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 @media (max-width: 1024px) {
   .guides-articles-container {
     grid-template-columns: repeat(2, 1fr);

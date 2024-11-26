@@ -8,9 +8,9 @@ import Navigation from "./components/navigation/Navigation";
 import NewsArticles from "./pages/newsArticles";
 import GuidesArticles from "./pages/guidesArticles";
 import ProjectsArticles from "./pages/projectsArticles";
-import "font-awesome/css/font-awesome.min.css";
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import AllArticles from "./components/articles/allArticles/AllArticles";
+import "font-awesome/css/font-awesome.min.css";
 
 export default function App() {
   return (

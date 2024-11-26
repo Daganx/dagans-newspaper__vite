@@ -13,7 +13,6 @@ html {
 }
 
 #root {
-  margin-top: 8rem;
   background-color: var(--primary-background-color);
 
   --primary-background-color: rgb(245, 245, 245);

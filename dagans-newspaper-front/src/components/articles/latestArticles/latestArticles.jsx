@@ -1,9 +1,10 @@
+// Affichage des 6 derniers articles sur la page accueil
+
 import { useState, useEffect } from "react";
 import { getPublicArticles } from "../../../services/publicArticleService";
 import { Link } from "react-router-dom";
 import "./latestArticles.css";
 
-// Affichage des 6 derniers articles sur la page index
 export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);

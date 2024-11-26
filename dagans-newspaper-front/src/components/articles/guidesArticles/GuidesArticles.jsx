@@ -1,3 +1,5 @@
+// Affichage des articles "GUIDES" sur la page d'accueil
+
 import { useState, useEffect } from "react";
 import { getPublicArticles } from "../../../services/publicArticleService";
 import { Link } from "react-router-dom";
@@ -27,7 +29,8 @@ export default function GuidesArticles() {
     fetchArticles();
   }, []);
 
-  if (loading) return <div className="loading">Chargement des articles Guides...</div>;
+  if (loading)
+    return <div className="loading">Chargement des articles Guides...</div>;
   if (error) return <div className="error">{error}</div>;
 
   return (

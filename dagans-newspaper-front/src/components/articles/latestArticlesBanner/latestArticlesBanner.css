@@ -1,11 +1,29 @@
 .latest-articles-banner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
 .latest-articles-banner h2 {
   font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+  .latest-articles-banner {
+    flex-direction: column;
+  }
+  .latest-articles-banner {
+    text-align: center;
+  }
+  .latest-articles-banner h3 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .latest-articles-banner h2 {
+    font-size: 2rem;
+  }
 }

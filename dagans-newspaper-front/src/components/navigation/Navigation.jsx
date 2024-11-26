@@ -13,7 +13,7 @@ export default function Navigation() {
               width="50"
               height="50"
               src="https://img.icons8.com/comic/100/home.png"
-              alt="home"
+              alt="bouton page index"
             />
           </Link>
         )}

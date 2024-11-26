@@ -2,7 +2,6 @@
   padding: 2rem;
   background-color: #f5f5f5;
 }
-
 .back-button-details {
   border: none;
   cursor: pointer;
@@ -10,11 +9,9 @@
   background-color: #f5f5f5;
   transition: transform 0.3s ease;
 }
-
 .back-button-details:hover {
   transform: scale(1.04);
 }
-
 .back-button-title-container {
   display: flex;
   gap: 1rem;
@@ -22,30 +19,25 @@
 .article-content-details h1 {
   font-size: 3rem;
 }
-
 .article-date-details {
   font-size: 0.9rem;
   color: #777;
   margin-bottom: 1rem;
 }
-
 .article-image-container {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .main-image-details {
   max-width: 100%;
   height: auto;
   border-radius: 18px;
 }
-
 .article-image-details-thumbnails {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
-
 .thumbnail {
   width: 80px;
   height: auto;
@@ -53,15 +45,12 @@
   border-radius: 4px;
   transition: transform 0.2s;
 }
-
 .thumbnail:hover {
   transform: scale(1.05);
 }
-
 .selected {
   border: 2px solid #eb9c0b;
 }
-
 .article-text-details p {
   line-height: 1.6;
   margin-bottom: 15px;

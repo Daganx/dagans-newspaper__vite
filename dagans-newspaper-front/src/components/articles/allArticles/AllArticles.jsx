@@ -1,3 +1,5 @@
+// Fichier pour afficher tout les articles via la route /all-articles
+
 import { useState, useEffect } from "react";
 import { getPublicArticles } from "../../../services/publicArticleService";
 import { Link } from "react-router-dom";

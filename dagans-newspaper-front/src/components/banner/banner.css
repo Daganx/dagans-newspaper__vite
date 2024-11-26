@@ -78,3 +78,18 @@
   background-color: #ffc93c;
   margin-left: 1rem;
 }
+
+@media (max-width: 768px) {
+  .banner {
+    font-size: 0.8rem;
+  }
+  .banner img {
+    width: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  .banner img {
+    display: none;
+  }
+}
