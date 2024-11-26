@@ -107,13 +107,15 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1 className="dashboard-title">Dashboard</h1>
 
       {/* Formulaire de création d'article */}
-      <h2>Create a New Article</h2>
-      <form onSubmit={handleCreate}>
-        <div>
-          <label htmlFor="title">Title</label>
+      <h2 className="dashboard-form-title">Create a New Article</h2>
+      <form onSubmit={handleCreate} className="dashboard-form">
+        <div className="dashboard-form-group">
+          <label htmlFor="title" className="dashboard-label">
+            Title
+          </label>
           <input
             type="text"
             id="title"
@@ -122,10 +124,13 @@ export default function Dashboard() {
               setNewArticle({ ...newArticle, title: e.target.value })
             }
             placeholder="Enter title"
+            className="dashboard-input"
           />
         </div>
-        <div>
-          <label htmlFor="content">Content</label>
+        <div className="dashboard-form-group">
+          <label htmlFor="content" className="dashboard-label">
+            Content
+          </label>
           <textarea
             id="content"
             value={newArticle.content}
@@ -133,10 +138,13 @@ export default function Dashboard() {
               setNewArticle({ ...newArticle, content: e.target.value })
             }
             placeholder="Enter content"
+            className="dashboard-textarea"
           />
         </div>
-        <div>
-          <label htmlFor="category">Category</label>
+        <div className="dashboard-form-group">
+          <label htmlFor="category" className="dashboard-label">
+            Category
+          </label>
           <select
             id="category"
             value={newArticle.category}
@@ -144,6 +152,7 @@ export default function Dashboard() {
               setNewArticle({ ...newArticle, category: e.target.value })
             }
             required
+            className="dashboard-select"
           >
             <option value="">Select a category</option>
             <option value="News">News</option>
@@ -151,8 +160,10 @@ export default function Dashboard() {
             <option value="Projects">Projects</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="images">Images</label>
+        <div className="dashboard-form-group">
+          <label htmlFor="images" className="dashboard-label">
+            Images
+          </label>
           <input
             type="file"
             id="images"
@@ -161,9 +172,10 @@ export default function Dashboard() {
             onChange={(e) =>
               setNewArticle({ ...newArticle, images: e.target.files })
             }
+            className="dashboard-file-input"
           />
         </div>
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="dashboard-button">
           {loading ? "Creating..." : "Create Article"}
         </button>
       </form>
@@ -279,27 +291,37 @@ export default function Dashboard() {
       )}
 
       {/* Affichage des articles existants */}
-      <h2>Existing Articles</h2>
-      {articles.map((article) => (
-        <div key={article._id}>
-          <h3>{article.title}</h3>
-          <p>{article.content}</p>
-          {article.images &&
-            article.images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`${article.title} - image ${index + 1}`}
-                style={{ maxWidth: "200px", margin: "5px" }}
-              />
-            ))}
-          <button onClick={() => handleDelete(article._id)}>Delete</button>
-          <button onClick={() => handleEdit(article)}>Edit</button>
-        </div>
-      ))}
+      <h2 className="dashboard-articles-title">Existing Articles</h2>
+      <div className="dashboard-articles-grid">
+        {articles.map((article) => (
+          <div key={article._id} className="dashboard-article-card">
+            <h3>{article.title}</h3>
+            <p>{article.content}</p>
+            {article.images &&
+              article.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`${article.title} - image ${index + 1}`}
+                  style={{ maxWidth: "200px", margin: "5px" }}
+                />
+              ))}
+            <button onClick={() => handleDelete(article._id)}>Delete</button>
+            <button onClick={() => handleEdit(article)}>Edit</button>
+          </div>
+        ))}
+      </div>
 
       {/* Bouton de déconnexion */}
-      <button onClick={handleLogout}>Logout</button>
+      <button className="logout-btn">
+        <img
+          onClick={handleLogout}
+          width="50"
+          height="50"
+          src="https://img.icons8.com/carbon-copy/100/exit.png"
+          alt="exit"
+        />
+      </button>
     </div>
   );
 }

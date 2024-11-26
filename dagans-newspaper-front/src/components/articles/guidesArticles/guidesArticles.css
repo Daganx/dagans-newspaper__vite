@@ -3,7 +3,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   padding: 2rem;
-  margin: 0 auto;
 }
 
 .guides-article-card {
@@ -29,6 +28,13 @@
   height: 40%;
   overflow: hidden;
   object-fit: cover;
+}
+
+.guides-article-category p{
+  background-color: #E4C087;
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 30px;
 }
 
 .guides-article-content {

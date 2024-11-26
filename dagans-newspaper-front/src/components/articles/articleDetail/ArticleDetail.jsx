@@ -38,7 +38,12 @@ export default function ArticleDetail() {
   return (
     <div className="article-details">
       <button className="back-button-details" onClick={() => navigate(-1)}>
-        ← Retour
+        <img
+          width="50"
+          height="50"
+          src="https://img.icons8.com/ios-filled/50/circled-left-2.png"
+          alt="circled-left-2"
+        />
       </button>
 
       <article className="article-content-details">

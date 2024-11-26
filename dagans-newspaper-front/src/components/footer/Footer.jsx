@@ -1,6 +1,10 @@
 import "./footer.css";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="footer">
       <p>
@@ -31,7 +35,9 @@ export default function Footer() {
       </ul>
       <p>
         2024. DL<br></br>
-        <a>Back to Top ↑</a>
+        <a onClick={scrollToTop} style={{ cursor: "pointer" }}>
+          Back to Top ↑
+        </a>
       </p>
     </div>
   );

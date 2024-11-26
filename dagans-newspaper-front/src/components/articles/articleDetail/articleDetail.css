@@ -1,63 +1,69 @@
 .article-details {
-  max-width: 1280px; /* Limite la largeur de l'article */
-  margin: 20px auto; /* Centre l'article sur la page */
-  padding: 20px; /* Ajoute de l'espace autour du contenu */
-  background-color: #ffffff; /* Fond blanc pour un look propre */
-  border-radius: 8px; /* Coins arrondis */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  padding: 2rem;
+  background-color: #f5f5f5;
 }
 
+.back-button-details {
+  border: none;
+  cursor: pointer;
+  border-radius: 18px;
+  background-color: #f5f5f5;
+  transition: transform 0.3s ease;
+}
+
+.back-button-details:hover {
+  transform: scale(1.04);
+}
+
+.back-button-title-container {
+  display: flex;
+  gap: 1rem;
+}
 .article-content-details h1 {
-  font-size: 2.5em; /* Taille de police pour le titre */
-  margin-bottom: 10px; /* Espace sous le titre */
-  color: #333; /* Couleur sombre pour le texte */
+  font-size: 3rem;
 }
 
-/* Styles pour la date de publication */
 .article-date-details {
-  font-size: 0.9em; /* Taille de police plus petite */
-  color: #777; /* Couleur grise pour le texte */
-  margin-bottom: 20px; /* Espace sous la date */
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
 }
 
-/* Styles pour l'image principale */
 .article-image-container {
-  text-align: center; /* Centre l'image */
-  margin-bottom: 20px; /* Espace sous l'image */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .main-image-details {
-  max-width: 100%; /* L'image ne dépasse pas la largeur de son conteneur */
-  height: auto; /* Garde les proportions de l'image */
-  border-radius: 4px; /* Coins arrondis pour l'image */
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
 }
 
-/* Styles pour les vignettes d'images */
 .article-image-details-thumbnails {
-  display: flex; /* Affiche les vignettes en ligne */
-  justify-content: center; /* Centre les vignettes */
-  gap: 10px; /* Espace entre les vignettes */
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .thumbnail {
-  width: 80px; /* Largeur fixe pour les vignettes */
-  height: auto; /* Garde les proportions de l'image */
-  cursor: pointer; /* Change le curseur au survol */
-  border-radius: 4px; /* Coins arrondis pour les vignettes */
-  transition: transform 0.2s; /* Animation au survol */
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s;
 }
 
 .thumbnail:hover {
-  transform: scale(1.05); /* Agrandit la vignette au survol */
+  transform: scale(1.05);
 }
 
 .selected {
-  border: 2px solid #eb9c0b; /* Bordure bleue pour la vignette sélectionnée */
+  border: 2px solid #eb9c0b;
 }
 
-/* Styles pour le texte de l'article */
 .article-text-details p {
-  line-height: 1.6; /* Hauteur de ligne pour une meilleure lisibilité */
-  margin-bottom: 15px; /* Espace entre les paragraphes */
-  color: #444; /* Couleur légèrement plus claire pour le texte */
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: rgb(5, 5, 5);
 }

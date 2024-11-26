@@ -1,10 +1,22 @@
+import { Link, useLocation } from "react-router-dom";
 import "./navigation.css";
-import { Link } from "react-router-dom";
 
 export default function Navigation() {
+  const location = useLocation();
+
   return (
     <>
       <nav className="navigation">
+        {location.pathname !== "/" && (
+          <Link to="/" className="accueil-btn">
+            <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/comic/100/home.png"
+              alt="home"
+            />
+          </Link>
+        )}
         <ul>
           <Link to="/articles/news">
             <li className="hover-underline hover-underline--red">NEWS</li>

@@ -8,16 +8,12 @@
   color: rgb(5, 5, 5);
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+html {
+  background-color: #f5f5f5;
 }
 
 #root {
-  position: relative; /* Ajoutez cette ligne */
-  max-width: 1920px;
+  margin-top: 8rem;
   background-color: var(--primary-background-color);
 
   --primary-background-color: rgb(245, 245, 245);
@@ -25,21 +21,17 @@ body {
   --heading-color: #cf2839;
   --secondary-color: //;;
 }
-
 @font-face {
   font-family: "main-font";
   src: url("./assets/fonts/poppins/poppins.ttf");
 }
-
 @font-face {
   font-family: "heading-font";
   src: url("./assets/fonts/Giaza/Giaza.otf");
 }
-
 .hover-underline {
   position: relative;
 }
-
 .hover-underline::after {
   content: "";
   position: absolute;
@@ -49,28 +41,22 @@ body {
   left: 0;
   transition: width 0.3s ease-in-out;
 }
-
 .hover-underline:hover::after {
   width: 100%;
 }
-
 /* Variantes de couleurs */
 .hover-underline--red::after {
   background-color: #ff6b6b;
 }
-
 .hover-underline--blue::after {
   background-color: #4ecdc4;
 }
-
 .hover-underline--green::after {
   background-color: #45d182;
 }
-
 .hover-underline--yellow::after {
   background-color: #ffc93c;
 }
-
 .loading,
 .error {
   text-align: center;

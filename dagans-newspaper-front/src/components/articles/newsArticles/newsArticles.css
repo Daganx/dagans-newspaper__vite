@@ -39,8 +39,11 @@
   justify-content: space-between;
 }
 
-.news-article-category {
-  font-weight: bold; /* Mettre en gras la catégorie */
+.news-article-category p {
+  background-color: #e4c087;
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 30px;
 }
 
 .article-footer {

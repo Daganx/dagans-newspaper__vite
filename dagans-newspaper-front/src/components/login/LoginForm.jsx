@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../services/axiosInstance";
+import "./loginForm.css";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -24,10 +25,11 @@ export default function LoginForm() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <h1 className="login-title">Login</h1>
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
+          className="login-input"
           type="email"
           placeholder="Email"
           value={email}
@@ -35,15 +37,18 @@ export default function LoginForm() {
           required
         />
         <input
+          className="login-input"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button className="login-button" type="submit">
+          Login
+        </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className="login-error">{error}</p>}
     </div>
   );
 }
